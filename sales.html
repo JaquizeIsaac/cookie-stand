@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salmon Cookies Stand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body class="sales-data">
+    <header>
+      <h1>Sales Data by Location</h1>
+      <nav>
+        <ul>
+          <li class="navigation"><a href="index.html">Home</a></li>
+          <li class="navigation"><a href="sales.html">Sales</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <table id="sales-table">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>6:00am</th>
+            <th>7:00am</th>
+            <th>8:00am</th>
+            <th>9:00am</th>
+            <th>10:00am</th>
+            <th>11:00am</th>
+            <th>12:00pm</th>
+            <th>1:00pm</th>
+            <th>2:00pm</th>
+            <th>3:00pm</th>
+            <th>4:00pm</th>
+            <th>5:00pm</th>
+            <th>6:00pm</th>
+            <th>7:00pm</th>
+            <th>Daily Location Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for each store location will be dynamically added here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Hourly Totals for All Locations</th>
+            <td id="total-6am"></td>
+            <td id="total-7am"></td>
+            <td id="total-8am"></td>
+            <td id="total-9am"></td>
+            <td id="total-10am"></td>
+            <td id="total-11am"></td>
+            <td id="total-12pm"></td>
+            <td id="total-1pm"></td>
+            <td id="total-2pm"></td>
+            <td id="total-3pm"></td>
+            <td id="total-4pm"></td>
+            <td id="total-5pm"></td>
+            <td id="total-6pm"></td>
+            <td id="total-7pm"></td>
+            <td id="total-daily"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </main>
+    <footer>&copy;2023</footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>

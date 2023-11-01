@@ -1,82 +1,76 @@
 'use strict';
 
-// Cookie stand locations
-const locations = [
-  {
-    name: 'Seattle',
-    minCustomers: 23,
-    maxCustomers: 65,
-    avgCookies: 6.3,
-  },
-  {
-    name: 'Tokyo',
-    minCustomers: 3,
-    maxCustomers: 24,
-    avgCookies: 1.2,
-  },
-  {
-    name: 'Dubai',
-    minCustomers: 11,
-    maxCustomers: 38,
-    avgCookies: 3.7,
-  },
-  {
-    name: 'Paris',
-    minCustomers: 20,
-    maxCustomers: 38,
-    avgCookies: 2.3,
-  },
-  {
-    name: 'Lima',
-    minCustomers: 2,
-    maxCustomers: 16,
-    avgCookies: 4.6,
-  },
-];
-
-// Function to calculate random number of customers
-function getRandomCustomers(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+// Salmon Cookie Stand constructor function
+function SalmonCookieStand(name, minCustomers, maxCustomers, avgCookies) {
+  this.name = name;
+  this.minCustomers = minCustomers;
+  this.maxCustomers = maxCustomers;
+  this.avgCookies = avgCookies;
+  this.cookiesPerHour = [];
 }
 
-// Function to calculate the total cookies sold for a location
-function calculateCookiesSold(location) {
-  const cookiesPerHour = [];
-  let totalCookies = 0;
+SalmonCookieStand.prototype.generateRandomCustomers = function () {
+  return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
+};
 
-  for (let i = 0; i < 14; i++) { // 14 hours of operation
-    const customers = getRandomCustomers(location.minCustomers, location.maxCustomers);
-    const cookies = Math.round(customers * location.avgCookies);
-    cookiesPerHour.push(cookies);
-    totalCookies += cookies;
+SalmonCookieStand.prototype.calculateCookiesPerHour = function () {
+  for (let hour = 6; hour <= 19; hour++) {
+    const randomCustomers = this.generateRandomCustomers();
+    const cookies = Math.round(randomCustomers * this.avgCookies);
+    this.cookiesPerHour.push(cookies);
+  }
+};
+
+SalmonCookieStand.prototype.render = function () {
+  const tableBody = document.querySelector("#sales-table tbody");
+  const row = document.createElement("tr");
+  row.innerHTML = `<td>${this.name}</td>`;
+
+  this.cookiesPerHour.forEach((cookies) => {
+    row.innerHTML += `<td>${cookies}</td>`;
+  });
+
+  const dailyTotal = this.cookiesPerHour.reduce((total, cookies) => total + cookies, 0);
+  row.innerHTML += `<td>${dailyTotal}</td>`;
+
+  tableBody.appendChild(row);
+};
+
+// Create instances for each store
+const seattle = new SalmonCookieStand('Seattle', 23, 65, 6.3);
+const tokyo = new SalmonCookieStand('Tokyo', 3, 24, 1.2);
+const dubai = new SalmonCookieStand('Dubai', 11, 38, 3.7);
+const paris = new SalmonCookieStand('Paris', 20, 38, 2.3);
+const lima = new SalmonCookieStand('Lima', 2, 16, 4.6);
+
+const stores = [seattle, tokyo, dubai, paris, lima];
+
+// Render header row with hours
+function renderHeaderRow() {
+  const table = document.getElementById("sales-table");
+  const thead = table.querySelector("thead tr");
+
+  for (let hour = 6; hour <= 19; hour++) {
+    const time = hour < 12 ? hour + "am" : hour === 12 ? "12pm" : hour - 12 + "pm";
+    thead.innerHTML += `<th>${time}</th>`;
+  }
+}
+
+// Render footer row with totals
+function renderFooterRow() {
+  const table = document.getElementById("sales-table");
+  const tfoot = table.querySelector("tfoot tr");
+
+  for (let hour = 6; hour <= 19; hour++) {
+    let hourlyTotal = 0;
+    stores.forEach((store) => {
+      hourlyTotal += store.cookiesPerHour[hour - 6];
+    });
+    tfoot.innerHTML += `<td>${hourlyTotal}</td>`;
   }
 
-  return { cookiesPerHour, totalCookies };
+  let grandTotal = stores.reduce((total, store) => total + store.cookiesPerHour.reduce((sum, cookies) => sum + cookies, 0), 0);
+  tfoot.querySelector("#total-daily").textContent = grandTotal;
 }
 
-// Render sales data for each location
-function renderSalesData() {
-  const salesTable = document.getElementById('sales-table');
-
-  locations.forEach((location) => {
-    const { cookiesPerHour, totalCookies } = calculateCookiesSold(location);
-    const row = salesTable.insertRow();
-
-    // Location name cell
-    const nameCell = row.insertCell(0);
-    nameCell.textContent = location.name;
-
-    // Hourly sales cells
-    cookiesPerHour.forEach((cookies, index) => {
-      const cell = row.insertCell(index + 1);
-      cell.textContent = cookies;
-    });
-
-    // Daily total cell
-    const totalCell = row.insertCell(cookiesPerHour.length + 1);
-    totalCell.textContent = totalCookies;
-  });
-}
-
-// Initialize the sales data table
-renderSalesData();
+// Render all store rows
