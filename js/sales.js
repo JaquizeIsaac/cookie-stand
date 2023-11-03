@@ -45,6 +45,7 @@ City.prototype.cookieTime = function(){
 
 City.prototype.render = function(){
   let body = document.getElementById("tableBody");
+  console.log (body)
   let cityRow = document.createElement('tr');
   body.appendChild(cityRow);
 
