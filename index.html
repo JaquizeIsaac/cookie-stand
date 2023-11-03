@@ -13,33 +13,52 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link href="css/style.css" type="text/css" rel="stylesheet" />
   </head>
-  <body class="sales-data">
+  <body>
     <header>
-      <h1>Welcome to Salmon Cookies!</h1>
-      <nav>
+      <h1 id="site-title">Pat's Salmon Cookies!</h1>
+      <nav aria-labelledby="site-title">
         <ul>
           <li class="navigation"><a href="index.html">Home</a></li>
           <li class="navigation"><a href="sales.html">Sales</a></li>
         </ul>
       </nav>
     </header>
-
     <main>
-      <img src="/Users/passwordis1234/Desktop/salmon.png" alt="illustration of a salmon" />
-      <h2>Seattle</h2>
-      <p>Hours Open: 6 am - 8 pm</p>
-      <p>Contact Info: 123-456-789</p>
-      <p>Location: 2901 3rd Ave #300, Seattle, WA 98121</p>
-      <h2>Tokyo</h2>
-      <p>Hours Open: 6 am - 8 pm</p>
-      <p>Contact Info: 123-456-789</p>
-      <p>Location: 1 Chrome, Sudima City, Tokyo 131-8634</p>
-      <h2>Dubai</h2>
-      <p>Hours Open: 6 am - 8 pm</p>
-      <p>Contact Info: 123-456-789</p>
-      <p>Location: 1 Sheikh Muhammed bin Rashid Blvd, Dubai</p>
-      <h2>Paris</h2>
-      <p>Hours Open: 6 am - 8 pm</p>
-      <p>Contact Info: 123-456-789</p>
-      <p>Location: Champ de Mars, 5 Avenue Anatole, Paris, 75007</p>
-      <h2>Lima</h2>
+      <img src="/Users/passwordis1234/Desktop/salmon.png" alt="image of salmon" />
+      <section aria-label="Seattle branch information">
+          <h2>Seattle</h2>
+          <p>Hours Open: 6 am - 8 pm</p>
+          <p>Contact Info: 123-456-789</p>
+          <p>Location: 2901 3rd Ave #300, Seattle, WA 98121</p>
+      </section>
+      <section aria-label="Tokyo branch information">
+          <h2>Tokyo</h2>
+          <p>Hours Open: 6 am - 8 pm</p>
+          <p>Contact Info: 123-456-789</p>
+          <p>Location: 1 Chrome, Sudima City, Tokyo 131-8634</p>
+      </section>
+      <section aria-label="Dubai branch information">
+          <h2>Dubai</h2>
+          <p>Hours Open: 6 am - 8 pm</p>
+          <p>Contact Info: 123-456-789</p>
+          <p>Location: 1 Sheikh Muhammed bin Rashid Blvd, Dubai</p>
+      </section>
+      <section aria-label="Paris branch information">
+          <h2>Paris</h2>
+          <p>Hours Open: 6 am - 8 pm</p>
+          <p>Contact Info: 123-456-789</p>
+          <p>Location: Champ de Mars, 5 Avenue Anatole, Paris, 75007</p>
+      </section>
+      <section aria-label="Lima branch information">
+          <h2>Lima</h2>
+          <p>Hours Open: 6 am - 8 pm</p>
+          <p>Contact Info: 123-456-789</p>
+          <p>Location: Malecón de la Reserva 615, Miraflores, Lima</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Salmon Cookies</p>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Salmon Cookies Stand</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <h1>Sales Data by Location</h1>
-      <nav>
-        <ul>
-          <li class="navigation"><a href="index.html">Home</a></li>
-          <li class="navigation"><a href="sales.html">Sales</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <title>Pat's Salmon Cookies</title>
+  <link rel="stylesheet" href="css/reset.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
 
-    <main>
-      <form id="addLocationForm">
-        <div id="form">
-        <fieldset>
-          <legend>Add a new store to the table!</legend>
-          <label
-            >Location Name:
-            <input name="name" type="text" required maxlength="10" size="8" />
-          </label>
+<body>
 
-          <label
-            >Minimum Customers Per Hour:
-            <input name="minCustomers" type="number" min="0" max="1000" />
-          </label>
-          <label
-            >Maximum Customers Per Hour:
-            <input name="maxCustomers" type="number" min="0" max="1000" />
-          </label>
-          <label
-            >Average Cookies Per Sale:
-            <input
-              name="avgCookies"
-              type="text"
-              id="floatInput"
-              pattern="[0-9]+(\.[0-9]+)?"
-              required
-              maxlength="4"
-              size="3"
-            />
-          </label>
-          <button type="submit">Click here to add!</button>
-        </fieldset>
-       
-      </form>
-    </div>
-      <div id="locationSales"></div>
-    </main>
-  </body>
-  <footer>&copy;2023</footer>
-  <script src="js/app.js"></script>
+  <header>
+    <h1>Welcome to Pat's Salmon Cookies!</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sales.html">Sales Data</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <form id="newStoreForm">
+      <fieldset>
+        <legend>Add a new store to the table!</legend>
+
+        <span>Location Name:</span>
+        <input type="text" name="cityName"/>
+
+        <span>Minimum Customers Per Hour:</span>
+        <input type="number" name="minCust">
+
+        <span>Maximum Customers Per Hour:</span>
+        <input type="number" name="maxCust">
+
+        <span>Average Cookies Per Sale:</span>
+        <input type="number" name="avgCookie">
+
+        <span></span>
+        <button type="submit">Click Here to Add!</button>
+      </fieldset>
+    </form>
+
+    <article>
+
+      <table>
+        <thead id="tableHead">
+          <th>Locations</th>
+          <th>6am</th>
+          <th>7am</th>
+          <th>8am</th>
+          <th>9am</th>
+          <th>10am</th>
+          <th>11am</th>
+          <th>12pm</th>
+          <th>1pm</th>
+          <th>2pm</th>
+          <th>3pm</th>
+          <th>4pm</th>
+          <th>5pm</th>
+          <th>6pm</th>
+          <th>7pm</th>
+          <th>Location Totals</th>
+      </thead>
+
+      <tbody id="tableBody"></tbody>
+
+      <tfoot id="tableFoot"></tfoot>
+    </table>
+
+  </article>
+</main>
+
+  <footer>
+    &copy; 2023 Pat's Salmon Cookies
+  </footer>
+
+  <script src="js/sales.js"></script>
+</body>
 </html>
